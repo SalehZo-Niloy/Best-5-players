@@ -22,6 +22,14 @@ function getInputFieldValue(elementId) {
 
     return inputFieldNumber;
 }
+// get element value
+function getElementValue(elementId) {
+    const element = document.getElementById(elementId);
+    const elementValueString = element.innerText;
+    const elementValueNumber = Number(elementValueString);
+
+    return elementValueNumber;
+}
 // set element value
 function setElementValue(elementId, value) {
     const element = document.getElementById(elementId);
@@ -46,4 +54,13 @@ document.getElementById('calculate').addEventListener('click', function () {
 
     setElementValue('player-expenses', playerExpense);
 
+})
+// total calculation
+document.getElementById('calculate-total').addEventListener('click', function () {
+    const managerCost = getInputFieldValue('manager-cost');
+    const coachCost = getInputFieldValue('coach-cost');
+    const playerCost = getElementValue('player-expenses');
+    const totalCost = managerCost + coachCost + playerCost;
+
+    setElementValue('total-cost', totalCost);
 })
