@@ -59,8 +59,19 @@ document.getElementById('calculate').addEventListener('click', function () {
 document.getElementById('calculate-total').addEventListener('click', function () {
     const managerCost = getInputFieldValue('manager-cost');
     const coachCost = getInputFieldValue('coach-cost');
+    if (managerCost === 0 || coachCost === 0) {
+        alert('Enter costs');
+        setElementValue('total-cost', 0);
+        return;
+    }
+
     const playerCost = getElementValue('player-expenses');
     const totalCost = managerCost + coachCost + playerCost;
+    if (isNaN(totalCost)) {
+        alert('Invalid Input');
+        setElementValue('total-cost', totalCost);
+        return;
+    }
 
     setElementValue('total-cost', totalCost);
 })
